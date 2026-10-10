@@ -1,0 +1,24 @@
+# Calliope - Project aliases and functions
+# All commands defined here, sourced by .salias
+# Run 'help' to see all available commands
+
+# ── Environment ──
+set -gx ENV_NAME '.venv'
+set -gx PYTHON_VERSION '3.13'
+
+# ── Python Environment ──
+# uv.lock is repo-tracked, so rmenv leaves it alone.
+alias rmenv='rm -rf .envrc $ENV_NAME calliope-web/node_modules; exit'
+alias mkenv='mkuv $ENV_NAME $PYTHON_VERSION'
+function install
+    clear
+    uv pip install -e './calliope-backend[dev]'; or return
+    npm install --prefix calliope-web
+end
+
+# ── Help ──
+# Relative path: .salias_f is always sourced with the project dir as PWD.
+function help
+    clear
+    sed "s/PYTHON_VERSION/$PYTHON_VERSION/" ./.salias_help.txt
+end

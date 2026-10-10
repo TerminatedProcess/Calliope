@@ -49,3 +49,7 @@ reference/
 
 # --- Local agent workspace (ZCode) ---
 .zcode/
+
+# --- Local dev env (direnv + Claude skill links) ---
+.envrc
+.claude/
