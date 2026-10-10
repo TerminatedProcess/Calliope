@@ -3,3 +3,6 @@ PYTHON ENVIRONMENT (PYTHON_VERSION) - rmenv, mkenv, install
   mkenv             Create .venv and direnv .envrc
   rmenv             Delete .venv, .envrc and calliope-web/node_modules
   install           Install backend (editable, dev extras) and frontend deps
+
+APP
+  run               Start backend (:8247) + frontend (:5173); Ctrl-C stops both

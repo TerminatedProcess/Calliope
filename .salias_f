@@ -22,3 +22,12 @@ function help
     clear
     sed "s/PYTHON_VERSION/$PYTHON_VERSION/" ./.salias_help.txt
 end
+
+# ── Run ──
+# Backend in the background, frontend in the foreground; Ctrl-C stops both
+# (bash's EXIT trap kills the whole process group, backend included).
+function run
+    bash -c 'trap "kill 0" EXIT
+        ./.venv/bin/python -m calliope.main --host 127.0.0.1 --port 8247 &
+        npm run dev --prefix calliope-web'
+end
